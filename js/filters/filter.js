@@ -71,6 +71,7 @@ KylinApp
       }
     }
   })
+
   .filter('range', function () {
     return function (input, total) {
       total = parseInt(total);
@@ -79,6 +80,7 @@ KylinApp
       return input;
     }
   })
+
   // Convert bytes into human readable format.
   .filter('bytes', function () {
     return function (bytes, precision) {
@@ -98,14 +100,18 @@ KylinApp
         number = Math.floor(Math.log(bytes) / Math.log(1024));
       return (bytes / Math.pow(1024, Math.floor(number))).toFixed(precision) + ' ' + units[number];
     }
-  }).filter('resizePieHeight', function () {
+  })
+
+  .filter('resizePieHeight', function () {
     return function (item) {
       if (item < 150) {
         return 1300;
       }
       return 1300;
     }
-  }).filter('utcToConfigTimeZone', function ($filter, kylinConfig) {
+  })
+
+  .filter('utcToConfigTimeZone', function ($filter, kylinConfig) {
 
     var gmttimezone;
     //convert GMT+0 time to specified Timezone
@@ -151,7 +157,9 @@ KylinApp
       return $filter('date')(convertedMillis, format) + " " + timezone;
 
     }
-  }).filter('reverseToGMT0', function ($filter) {
+  })
+
+  .filter('reverseToGMT0', function ($filter) {
     //backend store GMT+0 timezone ,by default front will show local,so convert to GMT+0 Date String format
     return function (item) {
       if (item || item == 0) {
@@ -159,8 +167,10 @@ KylinApp
         return $filter('date')(item, "yyyy-MM-dd HH:mm:ss");
       }
     }
-  }).filter('millisecondsToDay', function ($filter) {
+  })
+
+  .filter('millisecondsToDay', function ($filter) {
     return function (item) {
-      return item/86400000;
+      return item / 86400000;
     }
   });

@@ -27,9 +27,8 @@ KylinApp
     $scope.window = 0.68 * $window.innerHeight;
     $scope.tableConfig = tableConfig;
 
-
     $scope.state = {
-      filterAttr: 'id', filterReverse: false, reverseColumn: 'id',
+      filterAttr     : 'id', filterReverse: false, reverseColumn: 'id',
       dimensionFilter: '', measureFilter: ''
     };
 
@@ -40,7 +39,7 @@ KylinApp
       if (nameA > nameB)
         return 1;
       return 0; //default return value (no sorting)
-    };
+    }
 
     $scope.aceSrcTbLoaded = function (forceLoad) {
       if (forceLoad) {
@@ -49,8 +48,8 @@ KylinApp
       $scope.loading = true;
       TableModel.aceSrcTbLoaded(forceLoad).then(function () {
         $scope.loading = false;
-      },function(resp){
-        SweetAlert.swal('Oops...',resp, 'error');
+      }, function (resp) {
+        SweetAlert.swal('Oops...', resp, 'error');
       });
     };
 
@@ -60,12 +59,10 @@ KylinApp
 
     });
 
-
     $scope.showSelected = function (obj) {
       if (obj.uuid) {
         $scope.tableModel.selectedSrcTable = obj;
-      }
-      else if (obj.datatype) {
+      } else if (obj.datatype) {
         $scope.tableModel.selectedSrcTable.selectedSrcColumn = obj;
       }
     };
@@ -76,19 +73,18 @@ KylinApp
       $scope.aceSrcTbLoaded(true);
     };
 
-
     $scope.openModal = function () {
       $modal.open({
         templateUrl: 'addHiveTable.html',
-        controller: ModalInstanceCtrl,
-        resolve: {
-          tableNames: function () {
+        controller : ModalInstanceCtrl,
+        resolve    : {
+          tableNames : function () {
             return $scope.tableNames;
           },
           projectName: function () {
             return $scope.projectModel.selectedProject;
           },
-          scope: function () {
+          scope      : function () {
             return $scope;
           }
         }
@@ -101,6 +97,7 @@ KylinApp
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };
+
       $scope.add = function () {
         if ($scope.tableNames.trim() === "") {
           SweetAlert.swal('', 'Please input table(s) you want to synchronize.', 'info');
@@ -118,21 +115,25 @@ KylinApp
           var loadTableInfo = "";
           angular.forEach(result['result.loaded'], function (table) {
             loadTableInfo += "\n" + table;
-          })
+          });
+
           var unloadedTableInfo = "";
           angular.forEach(result['result.unloaded'], function (table) {
             unloadedTableInfo += "\n" + table;
-          })
+          });
 
           if (result['result.unloaded'].length != 0 && result['result.loaded'].length == 0) {
             SweetAlert.swal('Failed!', 'Failed to synchronize following table(s): ' + unloadedTableInfo, 'error');
           }
+
           if (result['result.loaded'].length != 0 && result['result.unloaded'].length == 0) {
             SweetAlert.swal('Success!', 'The following table(s) have been successfully synchronized: ' + loadTableInfo, 'success');
           }
+
           if (result['result.loaded'].length != 0 && result['result.unloaded'].length != 0) {
             SweetAlert.swal('Partial loaded!', 'The following table(s) have been successfully synchronized: ' + loadTableInfo + "\n\n Failed to synchronize following table(s):" + unloadedTableInfo, 'warning');
           }
+
           loadingRequest.hide();
           scope.aceSrcTbLoaded(true);
 
@@ -144,10 +145,12 @@ KylinApp
           } else {
             SweetAlert.swal('Oops...', "Failed to take action.", 'error');
           }
+
           loadingRequest.hide();
         })
       }
     };
+
     $scope.trimType = function (typeName) {
       if (typeName.match(/VARCHAR/i)) {
         typeName = "VARCHAR";

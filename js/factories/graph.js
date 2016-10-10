@@ -47,7 +47,7 @@ KylinApp.factory('GraphBuilder', function () {
     });
 
     return newGraph;
-  }
+  };
 
   graphBuilder.buildPieGraph = function (dimension, metrics, aggregatedData) {
     var newGraph = [];
@@ -59,7 +59,7 @@ KylinApp.factory('GraphBuilder', function () {
     });
 
     return newGraph;
-  }
+  };
 
   function getSortedKeys(results) {
     var sortedKeys = [];

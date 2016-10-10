@@ -84,10 +84,12 @@
         if (SEND_CACHE_CONTROL) {
             header("Cache-Control: private, {$cache_directive}, max-age=".CACHE_TIME, true);
         }
+
         if (SEND_EXPIRES) {
             date_default_timezone_set('GMT');
             header('Expires: '.gmdate('D, d M Y H:i:s', time()+CACHE_TIME).' GMT', true);
         }
+
         if (SEND_ETAG) {
             $etag = '"'.filemtime($source_file).fileinode($source_file).'"';
             header("ETag: $etag", true);
@@ -105,6 +107,7 @@
                 exit();
             }
         }
+
         if (isset($_SERVER['HTTP_IF_MODIFIED_SINCE']) && (strtotime($_SERVER['HTTP_IF_MODIFIED_SINCE']) === filemtime($source_file))) {
             // File in cache hasn't change
             header('Last-Modified: '.gmdate('D, d M Y H:i:s', filemtime($source_file)).' GMT', true, 304);
@@ -114,10 +117,10 @@
         // Send image headers
         if (in_array($source_ext, array('png', 'gif', 'jpeg', 'bmp'))) {
             header("Content-Type: image/".$source_ext, true);
-        }
-        else {
+        } else {
             header("Content-Type: image/jpeg", true);
         }
+
         header('Content-Length: '.filesize($source_file), true);
 
         // Close debug session if open
@@ -129,10 +132,10 @@
         // Send file
         if (USE_X_SENDFILE) {
             header('X-Sendfile: '.$source_file);
-        }
-        else {
+        } else {
             readfile($source_file);
         }
+
         exit();
     }
 

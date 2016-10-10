@@ -1002,6 +1002,8 @@ a i:hover {
 .tables {
 	text-align:left;
 	padding-top: 2px;
+	max-height: 550px;
+	overflow-y: auto;
 }
 
 #blue {

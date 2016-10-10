@@ -5,7 +5,9 @@
   'use strict';
 
 
-  angular.module( 'legendDirectives', [] ).directive( 'simpleSvgLegend', function () {
+  angular.module( 'legendDirectives', [] )
+
+    .directive( 'simpleSvgLegend', function () {
     return {
       restrict: 'EA',
       scope: {
