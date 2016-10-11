@@ -1,5 +1,5 @@
 {
-	"dataModel": "这个数据模型包含了2014年的航班数据",
-	"factTable": "AIRLINE表包含了每个航班的信息，包括延误时间",
-	"lookupTable": "ORIGIN表和DEST表包含了出发和到达机场的详细信息"
+	"dataModel": "这个数据模型包含了通过SSB样本生成器生成的4000万条测试数据",
+	"factTable": "V_LINEORDER表表示销售订单流水的详细信息，包括客户号，商品号，订单日期，价格，税费等",
+	"lookupTable": "CUSTOMER表是用户信息表，DATES表是日期常量维度表，PART表是商品信息表，SUPPLIER表是供应商信息表"
 }
