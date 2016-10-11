@@ -430,7 +430,7 @@ kylinApp.controller('gridCtrl', function ($scope, $http, $domUtilityService) {
     };
     var req = {
       method : 'POST',
-      url: 'http://demokap1.chinacloudapp.cn:7070/kylin/api/query',
+      url    : 'http://demokap1.chinacloudapp.cn:7070/kylin/api/query',
       // url    : 'http://66.211.189.71/kylin/api/query',
       data   : JSON.stringify(_data),
       headers: {
@@ -512,7 +512,8 @@ kylinApp.controller('tableCtrl', function ($scope, $http) {
 kylinApp.controller('cubeCtrl', function ($scope, $http) {
   var req = {
     method : 'GET',
-    url    : 'http://66.211.189.71/kylin/api/cube_desc/kylin_airline_sample',
+    // url    : 'http://66.211.189.71/kylin/api/cube_desc/kylin_airline_sample',
+    url    : 'http://demokap1.chinacloudapp.cn:7070/kylin/api/cube_desc/ssb',
     headers: {
       'Authorization': "Basic QURNSU46S1lMSU4=",
       'Content-Type' : 'application/json;charset=utf-8'
@@ -548,9 +549,12 @@ kylinApp.controller('cubeCtrl', function ($scope, $http) {
 });
 
 kylinApp.controller('stepCtrl', function ($scope, $http) {
+
+  // todo: change to ssb
   var req = {
     method : 'GET',
-    url    : 'http://66.211.189.71/kylin/api/jobs?projectName=airline',
+    // url    : 'http://66.211.189.71/kylin/api/jobs?projectName=airline',
+    url    : 'http://demokap1.chinacloudapp.cn:7070/kylin/api/jobs?projectName=ssb&timeFilter=2',
     headers: {
       'Authorization': "Basic QURNSU46S1lMSU4=",
       'Content-Type' : 'application/json;charset=utf-8'
@@ -576,9 +580,8 @@ kylinApp.controller('stepCtrl', function ($scope, $http) {
       $scope.mrWaiting = response[0].mr_waiting;
     })
     .error(function (data, status) {
-        alert(data.exception);
-      }
-    );
+      console.error(data.exception);
+    });
 
   $scope.dataSize = function (data) {
     var size;
@@ -595,18 +598,21 @@ kylinApp.controller('stepCtrl', function ($scope, $http) {
   };
 
   $scope.wowdelay = function (input) {
-    var time;
-    time = 0.2 + input * 0.2;
-    return time;
+    // var time;
+    // time = 0.2 + input * 0.2;
+    // return time;
+    //
+    return 0.2 + input * 0.2;
   };
 
-  $scope.showPop = false;
-
-  $scope.hoverIn = function () {
-    this.showPop = true;
-  };
-
-  $scope.hoverOut = function () {
-    this.showPop = false;
-  };
+  //
+  // $scope.showPop = false;
+  //
+  // $scope.hoverIn = function () {
+  //   this.showPop = true;
+  // };
+  //
+  // $scope.hoverOut = function () {
+  //   this.showPop = false;
+  // };
 });

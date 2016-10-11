@@ -9,15 +9,13 @@
 	<meta charset="utf-8">
 	<script src="js/wow.min.js"></script>
 	<script>
-		wow = new WOW(
-			{
-				boxClass:     'wow',      // default
-				animateClass: 'animated', // default
-				offset:       0,          // default
-				mobile:       true,       // default
-				live:         true        // default
-			}
-		)
+		var wow = new WOW({
+			boxClass    : 'wow',      // default
+			animateClass: 'animated', // default
+			offset      : 0,          // default
+			mobile      : true,       // default
+			live        : true        // default
+		});
 		wow.init();
 	</script>
 	<script src="js/lib/modernizr.js"></script>
@@ -57,8 +55,12 @@
 	<div class="content" ng-controller="transCtrl">
 		<!-- Slides -->
 		<section id="slides">
-			<div style="background-image: url('images/placeholder-slide-2.jpg');" class="fullscreen-image1">
-				<p style="position:relative; top:20px; right:20px" ng-switch="lan" class="wow bounceInUp" data-wow-delay="0.3s">
+			<div style="background-image: url('images/placeholder-slide-2.jpg');"
+					 class="fullscreen-image1">
+				<p style="position:relative; top:20px; right:20px"
+					 ng-switch="lan"
+					 class="wow bounceInUp"
+					 data-wow-delay="0.3s">
 					<a href="" class="lang" ng-switch-when="zh" style="position: relative; float:right;" ng-click="changeLanguage('en')">English</a>
 					<a href="" class="lang" ng-switch-when="en" style="position: relative; float:right;" ng-click="changeLanguage('zh')">中文</a>
 				</p>
@@ -67,9 +69,7 @@
 					<h1 class="fittext white wow bounceInUp" data-wow-delay="0.3s">{{ 'Welcome to Apache Kylin' | translate }}</h1>
 					<p class="uppercase white wow bounceInUp" data-wow-delay="0.5s">{{ 'Extreme OLAP Engine for Big Data' | translate }}</p>
 					<p>
-						<a href="#position"
-							 class="button-large withmargin white-border wow bounceInUp"
-							 data-wow-delay="0.7s">
+						<a href="#position" class="button-large withmargin white-border">
 							{{ 'Quick Tutorial' | translate }}<i class="fa fa-fw fa-angle-double-down" style="font-size: 15px"></i>
 						</a>
 					</p>
@@ -102,7 +102,9 @@
 					<div class='box-body pad' ng-controller="gridCtrl">
 						{{firstName}}
 						<form>
-							<textarea id="queryarea"class="textarea"  style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+							<textarea id="queryarea"
+												class="textarea"
+												style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
 							<div class="row no-spacing">
 								<div class="offset-by-eight-point-five text-left">
 									<p>
@@ -342,8 +344,7 @@
 			<br />
 			<br />
 
-			<!--a href="#workflow" class="down"><i class="icon-angle-down"></i></a-->
-			<p style="margin-bottom: 0px">
+			<p style="margin-bottom: 0">
 				<a href="#workflow" class="button-large withmargin2 dark-border">
 					{{ 'Build Workflow' | translate }}
 					<i class="fa fa-fw fa-angle-double-down" style="font-size: 15px"></i>
@@ -364,7 +365,7 @@
 			<!-- steps first row -->
 			<div class="row widerow wow fadeInUp">
 				<!-- start step -->
-				<div class=" work-section-grid desktop-two-point-four columns">
+				<div class="work-section-grid desktop-two-point-four columns">
 					<div>
 						<h3>{{ 'start' | translate }}</h3>
 						<p class="step">{{ 'Job Name' | translate }}: {{jobName}}</p>
@@ -409,7 +410,8 @@
 				<div ng-if="num >= 4" class="work-section-grid desktop-two-point-four columns" title="{{pops[steps[3].name]}}">
 					<div class="wow fadeInUp" data-wow-delay="{{wowdelay(steps[3].order)}}s">
 						<h3>{{ 'step' | translate }} 4</h3>
-						<p class="step">{{steps[3].name}}</p><p class="step" ng-if="steps[3].info.hdfs_bytes_written">{{ 'Data Size' | translate }}: {{dataSize(steps[3].info.hdfs_bytes_written)}}</p>
+						<p class="step">{{steps[3].name}}</p>
+            <p class="step" ng-if="steps[3].info.hdfs_bytes_written">{{ 'Data Size' | translate }}: {{dataSize(steps[3].info.hdfs_bytes_written)}}</p>
 						<p class="step">
 							{{ 'Duration' | translate }}:
 							{{steps[3].exec_start_time != 0 ?  (steps[3].exec_end_time != 0 ? ((steps[3].exec_end_time - steps[3].exec_start_time)/1000/60 | number:2) + ' mins' : '0 seconds') : '0 seconds'}}
@@ -509,7 +511,7 @@
 					</div>
 				</div>
 
-				<!-- step like 14 -->
+				<!-- end step like 14 -->
 				<div ng-if="num >= $parent.$index + 10"
 						 class="work-section-grid desktop-two-point-four columns"
 						 title="{{pops[steps[$index + 9].name]}}">

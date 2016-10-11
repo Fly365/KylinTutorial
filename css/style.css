@@ -943,11 +943,10 @@ a i:hover {
 .position {
 	background: #f7f7f7;
 	width: 100%;
-	margin-top: -8vh;
-	padding-top: 8vh;
-	height: 14vh;
+	margin-top: -1vh;
+	padding-top: 1vh;
+	height: 12vh;
 }
-
 
 /* ==================== 2.3 Query ==================== */
 
@@ -1119,8 +1118,8 @@ a i:hover {
 
 .position2 {
 	width: 100%;
-	margin-top: -6vh;
-	padding-top: 6vh;
+	margin-top: -1vh;
+	padding-top: 1vh;
 }
 
 
@@ -1137,8 +1136,8 @@ a i:hover {
 /* ==================== 2.7 Cube Design ==================== */
 
 .cube-design {
-	height: 79vh;
-	min-height: 600px;
+	/*height: 79vh;*/
+	/*min-height: 600px;*/
 	padding-top: 30px;
 	padding-bottom: 60px;
 	background: #f7f7f7;
@@ -1168,8 +1167,8 @@ a i:hover {
 /* ==================== 2.8 Workflow ==================== */
 
 .workflow {
-	height: 80vh;
-	min-height: 660px;
+	/*height: 80vh;*/
+	/*min-height: 660px;*/
 	color: #ffffff;
 	background: #f85c37;
 	width: 100%;
