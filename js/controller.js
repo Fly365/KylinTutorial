@@ -3,7 +3,7 @@ var kylinApp = angular.module('kylinApp', ['ngGrid', 'nvd3ChartDirectives', 'pas
 // multi-language support
 kylinApp.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', {
-    'Welcome to Apache Kylin'         : 'Welcome to Apache Kylin',
+    'Welcome to Apache Kylin'         : 'Welcome to KAP',
     'Extreme OLAP Engine for Big Data': 'Extreme OLAP Engine for Big Data',
     'Quick Tutorial'                  : 'Quick Tutorial',
     'Tables'                          : 'Tables',
@@ -41,12 +41,12 @@ kylinApp.config(['$translateProvider', function ($translateProvider) {
     'step'                            : 'step',
     'Data Size'                       : 'Data Size',
     'end'                             : 'end',
-    'Visit kylin.io'                  : 'Visit kylin.io',
-    'View Kylin Web'                  : 'View Kylin Web'
+    'Visit kylin.io'                  : 'Visit kyligence.io',
+    'View Kylin Web'                  : 'View KAP Web'
   });
 
   $translateProvider.translations('zh', {
-    'Welcome to Apache Kylin'         : '欢迎使用Apache Kylin',
+    'Welcome to Apache Kylin'         : '欢迎使用 KAP',
     'Extreme OLAP Engine for Big Data': '支持超大规模数据的OLAP引擎',
     'Quick Tutorial'                  : '快速学习教程',
     'Tables'                          : '表',
@@ -84,8 +84,8 @@ kylinApp.config(['$translateProvider', function ($translateProvider) {
     'step'                            : '步骤',
     'Data Size'                       : '数据大小',
     'end'                             : '结束',
-    'Visit kylin.io'                  : '访问 kylin.io',
-    'View Kylin Web'                  : '访问 Kylin 网页'
+    'Visit kylin.io'                  : '访问 kyligence.io',
+    'View Kylin Web'                  : '访问 KAP 网页'
   });
 
   $translateProvider.preferredLanguage('en');

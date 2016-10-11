@@ -1,0 +1,128 @@
+{
+  "name": "DEFAULT.V_LINEORDER",
+  "children": [
+    {
+      "name": "DEFAULT.CUSTOMER",
+      "join": "inner",
+      "jointip": "DEFAULT.CUSTOMER.C_CUSTKEY = DEFAULT.V_LINEORDER.LO_CUSTKEY",
+      "col": [
+        {
+          "colname": "C_CITY",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "C_CUSTKEY",
+          "coltype": "integer"
+        },
+        {
+          "colname": "C_REGION",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "C_NATION",
+          "coltype": "varchar"
+        }
+      ]
+    },
+    {
+      "name": "DEFAULT.DATES",
+      "join": "inner",
+      "jointip": "DEFAULT.DATES.D_DATE = DEFAULT.V_LINEORDER.LO_DATE",
+      "col": [
+        {
+          "colname": "D_DATEKEY",
+          "coltype": "integer"
+        },
+        {
+          "colname": "D_YEAR",
+          "coltype": "integer"
+        },
+        {
+          "colname": "D_YEARMONTH",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "D_YEARMONTHNUM",
+          "coltype": "integer"
+        },
+        {
+          "colname": "D_YEARMONTHYEAR",
+          "coltype": "integer"
+        }
+      ]
+    },
+    {
+      "name": "DEFAULT.PART",
+      "join": "inner",
+      "jointip": "DEFAULT.PART.P_PARTKEY = DEFAULT.V_LINEORDER.LO_PARTKEY",
+      "col": [
+        {
+          "colname": "P_PARTKEY",
+          "coltype": "integer"
+        },
+        {
+          "colname": "P_MFGR",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "P_CATEGORY",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "P_BRAND",
+          "coltype": "varchar"
+        }
+      ]
+    },
+    {
+      "name": "DEFAULT.SUPPLIER",
+      "join": "inner",
+      "jointip": "DEFAULT.SUPPLIER.S_SUPPKEY = DEFAULT.V_LINEORDER.LO_SUPPKEY",
+      "col": [
+        {
+          "colname": "S_SUPPKEY",
+          "coltype": "integer"
+        },
+        {
+          "colname": "S_CITY",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "S_REGION",
+          "coltype": "varchar"
+        },
+        {
+          "colname": "S_NATION",
+          "coltype": "varchar"
+        }
+      ]
+    }
+  ],
+  "type": "origin",
+  "col": [
+    {
+      "colname": "LO_PARTKEY",
+      "coltype": "integer"
+    },
+    {
+      "colname": "LO_CUSTKEY",
+      "coltype": "integer"
+    },
+    {
+      "colname": "LO_SUPPKEY",
+      "coltype": "integer"
+    },
+    {
+      "colname": "LO_ORDERDATE",
+      "coltype": "integer"
+    },
+    {
+      "colname": "LO_REVENUE",
+      "coltype": "bigint"
+    },
+    {
+      "colname": "LO_SUPPLYCOST",
+      "coltype": "bigint"
+    }
+  ]
+}
