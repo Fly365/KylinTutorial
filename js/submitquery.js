@@ -1,7 +1,7 @@
 function submitQuery() {
   $.ajaxSetup({
     headers: {
-      'Authorization': "Basic bHVuY2hlbjpDaGx3MDExNA==",
+      'Authorization': "",
       'Content-Type': 'application/json;charset=utf-8'
     }
   });

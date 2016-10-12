@@ -1,95 +1,3 @@
-var kylinApp = angular.module('kylinApp', ['ngGrid', 'nvd3ChartDirectives', 'pascalprecht.translate']);
-
-// multi-language support
-kylinApp.config(['$translateProvider', function ($translateProvider) {
-  $translateProvider.translations('en', {
-    'Welcome to Apache Kylin'         : 'Welcome to KAP',
-    'Extreme OLAP Engine for Big Data': 'Extreme OLAP Engine for Big Data',
-    'Quick Tutorial'                  : 'Quick Tutorial',
-    'Tables'                          : 'Tables',
-    'Interactive'                     : 'Interactive',
-    'OLAP on hadoop'                  : 'OLAP on hadoop',
-    'Try Me'                          : 'Try Me',
-    'executing'                       : 'executing',
-    'Response time'                   : 'Response time',
-    'Result length'                   : 'Result length',
-    'Visualization'                   : 'Visualization',
-    'Grid'                            : 'Grid',
-    'Graph Type'                      : 'Graph Type',
-    'choose'                          : 'choose',
-    'Data Model'                      : 'Data Model',
-    'Glance over'                     : 'Glance over',
-    'Fact Table'                      : 'Fact Table',
-    'Lookup Table'                    : 'Lookup Table',
-    'Check'                           : 'Check',
-    'here'                            : 'here',
-    'to learn the related terminology': ' to learn the related terminology',
-    'Cube Design'                     : 'Cube Design',
-    'Name'                            : 'Name',
-    'Table Name'                      : 'Table Name',
-    'Type'                            : 'Type',
-    'Detail'                          : 'Detail',
-    'Expression'                      : 'Expression',
-    'Param Type'                      : 'Param Type',
-    'Param Value'                     : 'Param Value',
-    'Return Type'                     : 'Return Type',
-    'Build Workflow'                  : 'Build Workflow',
-    'start'                           : 'start',
-    'Job Name'                        : 'Job Name',
-    'Duration'                        : 'Duration',
-    'MapReduce Waiting'               : 'MapReduce Waiting',
-    'step'                            : 'step',
-    'Data Size'                       : 'Data Size',
-    'end'                             : 'end',
-    'Visit kylin.io'                  : 'Visit kyligence.io',
-    'View Kylin Web'                  : 'View KAP Web'
-  });
-
-  $translateProvider.translations('zh', {
-    'Welcome to Apache Kylin'         : '欢迎使用 KAP',
-    'Extreme OLAP Engine for Big Data': '支持超大规模数据的OLAP引擎',
-    'Quick Tutorial'                  : '快速学习教程',
-    'Tables'                          : '表',
-    'Interactive'                     : '交互式',
-    'OLAP on hadoop'                  : 'OLAP 基于 hadoop',
-    'Try Me'                          : '试一试',
-    'executing'                       : '运行中',
-    'Response time'                   : '响应时间',
-    'Result length'                   : '结果数量',
-    'Visualization'                   : '视图',
-    'Grid'                            : '表格',
-    'Graph Type'                      : '图表类型',
-    'choose'                          : '请选择',
-    'Data Model'                      : '数据模型',
-    'Glance over'                     : '浏览',
-    'Fact Table'                      : '事实表',
-    'Lookup Table'                    : '查找表',
-    'Check'                           : '点击',
-    'here'                            : '这里',
-    'to learn the related terminology': '了解相关专业术语',
-    'Cube Design'                     : 'Cube设计',
-    'Name'                            : '名称',
-    'Table Name'                      : '表名',
-    'Type'                            : '类型',
-    'Detail'                          : '详情',
-    'Expression'                      : '表达式',
-    'Param Type'                      : '参数类型',
-    'Param Value'                     : '参数值',
-    'Return Type'                     : '返回类型',
-    'Build Workflow'                  : '生成工作流',
-    'start'                           : '开始',
-    'Job Name'                        : 'Job 名',
-    'Duration'                        : '持续时间',
-    'MapReduce Waiting'               : 'MapReduce 等待',
-    'step'                            : '步骤',
-    'Data Size'                       : '数据大小',
-    'end'                             : '结束',
-    'Visit kylin.io'                  : '访问 kyligence.io',
-    'View Kylin Web'                  : '访问 KAP 网页'
-  });
-
-  $translateProvider.preferredLanguage('en');
-}]);
 
 kylinApp.controller('transCtrl', function ($scope, $translate, $http) {
   $scope.lan = 'en';
@@ -143,7 +51,7 @@ kylinApp.controller('transCtrl', function ($scope, $translate, $http) {
   };
 });
 
-kylinApp.controller('gridCtrl', function ($scope, $http, $domUtilityService) {
+kylinApp.controller('gridCtrl', function ($scope, $http, $domUtilityService, $tokenConfig) {
   $scope.myData = [];
   $scope.myCol = [];
 
@@ -434,7 +342,7 @@ kylinApp.controller('gridCtrl', function ($scope, $http, $domUtilityService) {
       // url    : 'http://66.211.189.71/kylin/api/query',
       data   : JSON.stringify(_data),
       headers: {
-        'Authorization': "Basic QURNSU46S1lMSU4=",
+        'Authorization': $tokenConfig.auth,
         'Content-Type' : 'application/json;charset=utf-8'
       }
     };
@@ -477,13 +385,13 @@ kylinApp.controller('gridCtrl', function ($scope, $http, $domUtilityService) {
   }
 });
 
-kylinApp.controller('tableCtrl', function ($scope, $http) {
+kylinApp.controller('tableCtrl', function ($scope, $http, $tokenConfig) {
   var req = {
     method : 'GET',
     // url    : 'http://66.211.189.71/kylin/api/tables_and_columns?project=airline',
     url    : 'http://demokap1.chinacloudapp.cn:7070/kylin/api/tables_and_columns?project=ssb',
     headers: {
-      'Authorization': "Basic QURNSU46S1lMSU4=",
+      'Authorization': $tokenConfig.auth,
       'Content-Type' : 'application/json;charset=utf-8'
     }
   };
@@ -509,13 +417,13 @@ kylinApp.controller('tableCtrl', function ($scope, $http) {
 });
 
 // todo: cube desc
-kylinApp.controller('cubeCtrl', function ($scope, $http) {
+kylinApp.controller('cubeCtrl', function ($scope, $http, $tokenConfig) {
   var req = {
     method : 'GET',
     // url    : 'http://66.211.189.71/kylin/api/cube_desc/kylin_airline_sample',
     url    : 'http://demokap1.chinacloudapp.cn:7070/kylin/api/cube_desc/ssb',
     headers: {
-      'Authorization': "Basic QURNSU46S1lMSU4=",
+      'Authorization': $tokenConfig.auth,
       'Content-Type' : 'application/json;charset=utf-8'
     }
   };
@@ -548,7 +456,7 @@ kylinApp.controller('cubeCtrl', function ($scope, $http) {
   };
 });
 
-kylinApp.controller('stepCtrl', function ($scope, $http) {
+kylinApp.controller('stepCtrl', function ($scope, $http, $tokenConfig) {
 
   // todo: change to ssb
   var req = {
@@ -556,7 +464,7 @@ kylinApp.controller('stepCtrl', function ($scope, $http) {
     // url    : 'http://66.211.189.71/kylin/api/jobs?projectName=airline',
     url    : 'http://demokap1.chinacloudapp.cn:7070/kylin/api/jobs?projectName=ssb&timeFilter=2',
     headers: {
-      'Authorization': "Basic QURNSU46S1lMSU4=",
+      'Authorization': $tokenConfig.auth,
       'Content-Type' : 'application/json;charset=utf-8'
     }
   };

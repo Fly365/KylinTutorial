@@ -4,7 +4,7 @@ stepApp.controller('stepCtrl', function ($scope, $http) {
   $scope.lastName = "Doe";
 });
 
-stepApp.controller('gridCtrl', function ($scope, $http, $domUtilityService) {
+stepApp.controller('gridCtrl', function ($scope, $http, $domUtilityService, $tokenConfig) {
   $scope.myData = [];
   $scope.myCol = [];
 
@@ -70,7 +70,7 @@ stepApp.controller('gridCtrl', function ($scope, $http, $domUtilityService) {
       url    : 'http://10.9.145.178:7070/kylin/api/query',
       data   : JSON.stringify(_data),
       headers: {
-        'Authorization': "Basic QURNSU46S1lMSU4=",
+        'Authorization': $tokenConfig.auth,
         'Content-Type' : 'application/json;charset=utf-8'
       }
     };

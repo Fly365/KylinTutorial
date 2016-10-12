@@ -33,7 +33,7 @@ KylinApp.factory('GraphBuilder', function () {
     ];
 
     return newGraph;
-  }
+  };
 
   graphBuilder.buildBarGraph = function (dimension, metrics, aggregatedData) {
     var newGraph = [];
