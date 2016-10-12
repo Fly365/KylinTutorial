@@ -1086,8 +1086,8 @@ a i:hover {
 }
 
 .schema {
-	padding-top: 58px;
-	padding-left: 50px;
+	padding-top: 30px;
+	/*padding-left: 50px;*/
 	text-align:left;
 }
 
