@@ -1,10 +1,10 @@
 {
-  "name": "DEFAULT.V_LINEORDER",
+  "name": "SSB.V_LINEORDER",
   "children": [
     {
-      "name": "DEFAULT.CUSTOMER",
+      "name": "SSB.CUSTOMER",
       "join": "inner",
-      "jointip": "DEFAULT.CUSTOMER.C_CUSTKEY = DEFAULT.V_LINEORDER.LO_CUSTKEY",
+      "jointip": "SSB.CUSTOMER.C_CUSTKEY = SSB.V_LINEORDER.LO_CUSTKEY",
       "col": [
         {
           "colname": "C_CITY",
@@ -25,9 +25,9 @@
       ]
     },
     {
-      "name": "DEFAULT.DATES",
+      "name": "SSB.DATES",
       "join": "inner",
-      "jointip": "DEFAULT.DATES.D_DATE = DEFAULT.V_LINEORDER.LO_DATE",
+      "jointip": "SSB.DATES.D_DATE = SSB.V_LINEORDER.LO_DATE",
       "col": [
         {
           "colname": "D_DATEKEY",
@@ -52,9 +52,9 @@
       ]
     },
     {
-      "name": "DEFAULT.PART",
+      "name": "SSB.PART",
       "join": "inner",
-      "jointip": "DEFAULT.PART.P_PARTKEY = DEFAULT.V_LINEORDER.LO_PARTKEY",
+      "jointip": "SSB.PART.P_PARTKEY = SSB.V_LINEORDER.LO_PARTKEY",
       "col": [
         {
           "colname": "P_PARTKEY",
@@ -75,9 +75,9 @@
       ]
     },
     {
-      "name": "DEFAULT.SUPPLIER",
+      "name": "SSB.SUPPLIER",
       "join": "inner",
-      "jointip": "DEFAULT.SUPPLIER.S_SUPPKEY = DEFAULT.V_LINEORDER.LO_SUPPKEY",
+      "jointip": "SSB.SUPPLIER.S_SUPPKEY = SSB.V_LINEORDER.LO_SUPPKEY",
       "col": [
         {
           "colname": "S_SUPPKEY",
